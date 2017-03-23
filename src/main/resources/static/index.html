@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+
+    <script src="assets/jquery-1.11.1.js" ></script>
+    <script src="jsonjs/json2.js"></script>
+<style>
+    body{ text-align:center}
+    .div{ margin:0 auto; width:400px; height:100px; border:1px solid #F00}
+</style>
+</head>
+<body>
+<div class="div">
+        <tr>
+            <!--<td><input type="text" id="start_time" name="startTime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'#F{$dp.$D(\'end_time\')}'});"/><p>开始时间</p></td>-->
+            <!--<td><input type="text" id="end_time" name="endTime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'start_time\')}'});"><p>结束时间</p></td>-->
+            <!--<td>用户名：<input type="text" id="memberName" name="memberName"/></td><br/>-->
+            <td>Id：<input type="text" id="Id" name="Id"/></td><br/>
+            <td>用户Id：<input type="text" id="memberId" name="memberId"/></td><br/>
+            <td><a href="javascript:void(0);" id="sub">查询</a></td>
+        </tr>
+</div>
+<div id="main"></div>
+<script>
+    $(document).ready(function () {
+        $("#main").load("/test/index");
+    });
+    $(function () {
+        $("#sub").click(function () {
+            var mId = $("#memberId").val();
+            var id = $("#Id").val();
+            var url = "/test/index";
+            if (id != "" && mId != ""){
+                url += "?id="+id+"&memberId="+mId;
+            }else {
+                if (id != ""){
+                    url += "?id="+id;
+                }
+                if (mId != ""){
+                    url += "?memberId="+mId;
+                }
+            }
+            $("#main").load(url);
+//            $.ajax({
+//                type: "post",
+//                url: url,
+//                dataType: "json",
+//                async: true,
+//                success:function (data) {
+//                    if (data.success){
+//                        alert("哎呦，不错哦");
+//                        $("#main").load(data);
+//                    }else {
+//                        alert("没找到您查询数据");
+//                        $("#main").load();
+//                    }
+//                }
+//            })
+        })
+    })
+
+</script>
+</body>
+</html>

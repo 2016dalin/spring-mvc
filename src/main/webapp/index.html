@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>simpleSwitch演示</title>
+    <link rel="stylesheet" type="text/css" href="css/jquery.simpleSwitch/jquery.simpleSwitch.css">
+    <style type="text/css">
+        /*设置盒模型*/
+        *
+        {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        :before,:after
+        {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box
+        }
+        body{font-family: 'Microsoft Yahei'; font-size: 16px; background: white; margin: 10px; padding: 0;}
+        input[type="button"] {
+            background-color: #FFF;
+            border: solid 1px #8E8E8E;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<h1>simpleSwitch示例：</h1>
+<h2>开关1：</h2>
+
+<div id="switch1" class="simple-switch">
+    <input type="checkbox" />
+    <span class="switch-handler"></span>
+</div>
+
+
+<h2>开关2：</h2>
+
+<div id="switch2" class="simple-switch active">
+    <input type="checkbox" checked/>
+    <span class="switch-handler"></span>
+</div>
+
+<input type="button" value="切换所有开关状态" onclick="$('.simple-switch').simpleSwitch('toggle');"/>
+<input type="button" value="打开开关一" onclick="$('#switch1').simpleSwitch('toggle', true);"/>
+<input type="button" value="关闭开关一" onclick="$('#switch1').simpleSwitch('toggle', false);"/>
+<input type="button" value="打开开关儿" onclick="$('#switch2').simpleSwitch('toggle', true);"/>
+<input type="button" value="关闭开关儿" onclick="$('#switch2').simpleSwitch('toggle', false);"/>
+<input type="button" value="获取开关一状态" onclick="alert('是否打开：'+$('#switch1').simpleSwitch('state'));"/>
+
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.simpleSwitch/jquery.simpleSwitch.js"></script>
+<script type="text/javascript">
+
+    // 监听开关2的状态
+    $('#switch2').on('switch-change', function(e)
+    {
+        console.log('开关2的状态：'+e.detail);
+    });
+</script>
+</body>
+</html>
